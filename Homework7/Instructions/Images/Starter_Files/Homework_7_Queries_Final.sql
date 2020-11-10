@@ -115,6 +115,9 @@ order by amount desc;
 select * from transactions_t where time = TRUE
 LIMIT 100;
 
+-- There appear to be a number of anomalous transactions
+-- In particular, the top 4 appear to fraudlent,
+-- particularly when you look at the size of these transactions relative where they "occured"
 
 -- 3. Total $ amount and number of transactions, per card holder, of $2.00 or less
 select ch_name, sum(amount) as "Total Amount", count(amount) as "Total Number"
@@ -131,6 +134,9 @@ where amount <= 2
 group by m_name
 order by "Total Amount" desc
 LIMIT 5
+
+-- There may be some fraudlent transactions here as any number greater
+-- than 3 or 4 transactions a year of less than $2.00 seems a bit out of the norm.
 
 
 -- 5. Creating views
